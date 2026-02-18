@@ -33,4 +33,5 @@ module "vpc_dev" {
   cidr = "10.0.1.0/24"
 }
 ```
+[Документация к модулю](./task2/src/modules/vpc/README.md)
 
