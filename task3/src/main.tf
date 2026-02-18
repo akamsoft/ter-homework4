@@ -22,8 +22,7 @@ module "vpc_dev" {
   source = "./modules/vpc"
   name     = "dev"
   subnets = [
-    { zone = "ru-central1-a", cidr = "10.0.1.0/24" },
-    { zone = "ru-central1-b", cidr = "10.0.2.0/24" },
+    { zone = "ru-central1-a", cidr = "10.0.1.0/24" }
   ]
 }
 
@@ -55,8 +54,8 @@ module "example-vm" {
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name       = "dev"
   network_id     = module.vpc_dev.vpc_id
-  subnet_zones   = [module.vpc_dev.subnet_zones[1]]
-  subnet_ids     = [module.vpc_dev.subnet_ids[1]]
+  subnet_zones   = [module.vpc_dev.subnet_zones[0]]
+  subnet_ids     = [module.vpc_dev.subnet_ids[0]]
   instance_name  = "web2"
   instance_count = 1
   image_family   = "ubuntu-2004-lts"
