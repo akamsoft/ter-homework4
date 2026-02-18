@@ -1,0 +1,18 @@
+#cloud-config
+users:
+  - name: ubuntu
+    ssh-authorized-keys:
+      - ${ssh_public_key}
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+
+package_update: true
+package_upgrade: false
+packages:
+  - mc
+  - nginx
+runcmd:
+  - [systemctl, start, nginx]
+  - [systemctl, enable, nginx]
+
